@@ -4,5 +4,6 @@ exports.list = function(req, res) {
 };
 
 exports.authorization = function (req, res) {
-    console.log(req, res);
+    console.log(req.body);
+    res.sendStatus(200);
 };

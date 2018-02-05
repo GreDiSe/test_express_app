@@ -8,17 +8,14 @@ class FormSingIn extends React.Component {
     };
 
     handleChangeEmail = e => {
-        console.log(e);
         this.setState({ email: e.target.value });
     };
 
     handleChangePassword = e => {
-        console.log(e);
         this.setState({ password: e.target.value });
     };
 
-    sendUserInfo = e => {
-        console.log(this.state.email, this.state.password);
+    sendUserInfo = () => {
         fetch("/api/authorization/",
             {
                 headers: {
@@ -31,16 +28,14 @@ class FormSingIn extends React.Component {
                     password: this.state.password
                 })
             })
-            .then(res => console.log(res))
             .catch(res => console.log(res));
 
     };
 
     render() {
         return (
-            <form style={{
-                padding: '10px'
-            }}>
+            <form style={{padding: '10px'}}>
+
                 <h6 style={{margin: '5px'}}>Enter email</h6>
                 <FormControl
                     type="text"
