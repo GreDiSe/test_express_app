@@ -28,8 +28,9 @@ app.locals.something = 'value';
 app.locals.qaz = 'qut';
 
 app.get('/', routes.index);
-app.get('/test', routes.test);
+app.get('/authorization', routes.test);
 app.get('/users', user.list);
+app.post('/api/authorization', user.authorization)
 
 http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
