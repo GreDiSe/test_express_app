@@ -15,6 +15,7 @@
     "errorhandler": "^1.5.0",
     "express": "^4.16.2",
     "express-react-views": "^0.10.5",
+    "jQuery": "^1.7.4",
     "material-ui": "^0.20.0",
     "morgan": "^1.9.0",
     "prop-types": "^15.6.0",
