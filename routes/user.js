@@ -4,6 +4,7 @@ exports.list = function(req, res) {
 };
 
 exports.authorization = function (req, res) {
-    console.log(req.body);
-    res.sendStatus(200);
+    const {email, password} = req.body;
+    if(email === 'qwe' && password === '123') res.sendStatus(200);
+    else res.sendStatus(401);
 };
