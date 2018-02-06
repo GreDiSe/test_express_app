@@ -1,8 +1,9 @@
 
-exports.index = function(req, res) {
-  res.render('Index', {title: 'Express', foo: {bar: 'baz'}});
+exports.index = (req, res) => {
+    res.sendFile('index.html');
 };
 
-exports.test = function(req, res) {
-    res.render('Authorization/SingIn');
+exports.test = (req, res) => {
+    res.send('YHADI')
 };
+

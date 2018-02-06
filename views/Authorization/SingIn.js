@@ -1,5 +1,4 @@
 import React from 'react';
-import Wrapper from '../Wrapper';
 import { Well } from 'react-bootstrap';
 import FormSingIn from './FormSingIn'
 
@@ -18,12 +17,12 @@ const header = {
 class SingIn extends React.Component {
     render() {
         return (
-            <Wrapper>
+            <div>
                 <Well style={well}>
                     <h3 style={header}>Sing in</h3>
                     <FormSingIn/>
                 </Well>
-            </Wrapper>
+            </div>
         );
     }
 }

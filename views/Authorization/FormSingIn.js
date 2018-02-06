@@ -1,10 +1,13 @@
 import React from 'react';
 import { FormControl, Button } from 'react-bootstrap';
+import AlertMessage from './Alert'
 
 class FormSingIn extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {email: '', password: ''};
+        this.state = {email: '', password: '', resultAlert: null};
+        this.ERROR_INPUT = 'ERROR';
+        this.SUCCESS_INPUT = 'SUCCESS';
     };
 
     handleChangeEmail = e => {
@@ -28,13 +31,41 @@ class FormSingIn extends React.Component {
                     password: this.state.password
                 })
             })
-            .catch(res => console.log(res));
+            .then(res => {
+                if(res.status === 200) this.setState({resultAlert: this.SUCCESS_INPUT});
+                else this.setState({resultAlert: this.ERROR_INPUT});
 
+            })
+            .catch(er => console.log(er));
+        this.setState({email: '', password: ''});
+    };
+
+    resultMessage = () => {
+        if (this.state.resultAlert) {
+            if (this.state.resultAlert === this.ERROR_INPUT)
+                return (
+                    <AlertMessage
+                        bsStyle={'danger'}
+                        header={'Unauthorized'}
+                        message={'Error. Verify that the data entered is correct.'}
+                    />
+                );
+            else if(this.state.resultAlert === this.SUCCESS_INPUT)
+                return (
+                    <AlertMessage
+                        bsStyle={'success'}
+                        header={'Success'}
+                        message={'Just a second.'}
+                    />
+                )
+        }
     };
 
     render() {
         return (
             <form style={{padding: '10px'}}>
+
+                {this.resultMessage()}
 
                 <h6 style={{margin: '5px'}}>Enter email</h6>
                 <FormControl
